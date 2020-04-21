@@ -6,7 +6,7 @@ title: "About"
 
 Personal blog detailing the sources on [https://github.com/avergnaud](https://github.com/avergnaud)
 
-<div id="languages-result">Chargement des repos...</div>
+<div id="languages-result">Loading repositories...</div>
 
 <script>
 
@@ -36,7 +36,7 @@ Personal blog detailing the sources on [https://github.com/avergnaud](https://gi
                         + "&s=updated' target='_blank'>" 
                         + s[0] 
                         + "</a>"
-            languageDiv.innerHTML = lien + ' ' + s[1];  
+            languageDiv.innerHTML = lien + ' <span class="rnb">' + s[1] + '</span>';  
             listDiv.appendChild(languageDiv);
         }
         }

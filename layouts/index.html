@@ -22,7 +22,9 @@
                     {{ end }}
                 </div>
                 <div class="post-preview">
+                    {{ if .Params.imagePreview }}
                     <img src="{{ with .Params.imagePreview }}{{ . }}{{ end }}" />
+                    {{ end }}
                 </div>
             </div>
             <div class="post-footer">
