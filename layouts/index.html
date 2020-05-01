@@ -1,10 +1,5 @@
 {{ define "main" }}
 <div class = "article-content">
-        {{ if isset .Site.Params "description" }}
-        <div class="description">
-            <p>{{ .Site.Params.Description | markdownify }}</p>
-        </div>
-        {{ end }}
         <!-- Range over the pages and only include the ones that are a post type -->
         {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
         {{ range (.Paginate $pages).Pages }}
@@ -15,17 +10,17 @@
                 </a>
             </h2>
             <div class="custom-container">
-                <div>
+                <div class="post-text-preview">
                     <p>{{ .Summary }}</p>
                     {{ if (and (.Site.Params.showReadMore) (.Truncated)) }}
                     <p><a href="{{ .RelPermalink }}">Read more...</a></p>
                     {{ end }}
                 </div>
+                {{ if .Params.imagePreview }}
                 <div class="post-preview">
-                    {{ if .Params.imagePreview }}
                     <img src="{{ with .Params.imagePreview }}{{ . }}{{ end }}" />
-                    {{ end }}
                 </div>
+                {{ end }}
             </div>
             <div class="post-footer">
             <time>{{ .Date.Format "January 2, 2006" }}</time>

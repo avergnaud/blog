@@ -1,0 +1,20 @@
+<!-- Sidebar navigation -->
+<nav>
+  <div class="nav-container">
+      {{ partial "header.html" . }}
+      {{ if isset .Site.Params "description" }}
+      <div class="description-container">
+        <div class="description">
+            <p>{{ .Site.Params.Description | markdownify }}</p>
+        </div>
+      </div>
+      {{ end }}
+      <div class="nav-menu">
+        {{ range .Site.Menus.main }}
+          <a class="color-link nav-link" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
+        {{ end }}
+        <a class="color-link nav-link" href="{{ .Site.RSSLink }}" target="_blank" rel="noopener" type="application/rss+xml">RSS</a>
+      </div>
+    </div>
+{{ partial "footer.html" . }}
+</nav>
