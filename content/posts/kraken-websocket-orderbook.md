@@ -1,7 +1,7 @@
 ---
 title: "Live Order Book"
 date: 2020-04-19T11:01:22+02:00
-draft: true
+draft: false
 imagePreview: "/images/kraken-websocket-orderbook-preview.png"
 tags: [
     "fintech",

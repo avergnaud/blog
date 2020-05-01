@@ -1,7 +1,7 @@
 ---
 title: "Market Cap Treemap"
 date: 2020-04-18T20:38:21+02:00
-draft: true
+draft: false
 imagePreview: "/images/coinmarketcap-treemap-preview.png"
 tags: [
     "fintech",
