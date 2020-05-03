@@ -8,7 +8,7 @@ title: "Hosted Pages"
 
 [sources](https://github.com/avergnaud/meetup-novembre-2019)&nbsp;&nbsp;|&nbsp;&nbsp;[demo](/meetup-react)
 
-<hr>
+<hr class="hosted">
 
 ### QR code readers
 
@@ -17,19 +17,19 @@ title: "Hosted Pages"
 * Pure Javascript version : [demo](/qr-pure-js)
 * Webpack version : [demo](/qr-webpack)
 
-<hr>
+<hr class="hosted">
 
 ### "Knockout.JS like" binding
 
 [sources](https://github.com/avergnaud/knockoutjs-like-binding)&nbsp;&nbsp;|&nbsp;&nbsp;[demo](/ko)
 
-<hr>
+<hr class="hosted">
 
 ### Client side PDF generation and download
 
 [sources](https://github.com/avergnaud/js-pdf-gen-dl)&nbsp;&nbsp;|&nbsp;&nbsp;[demo](/js-pdf-gen-dl)
 
-<hr>
+<hr class="hosted">
 
 ### Présentation Niort Numérique Smart-City IOTA
 

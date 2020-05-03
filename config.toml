@@ -17,19 +17,25 @@ paginate = 4 # Set the number of posts to show before overflowing to the next pa
 
 # Menu links along the sidebar navigation.
 [[menu.main]]
+	identifier = "home"
+	name = "Home"
+	url = "/"
+	weight = 1 
+
+[[menu.main]]
 	identifier = "about"
 	name = "About"
 	url = "/about/"
-	weight = 1 # Weight is an integer used to sort the menu items. The sorting goes from smallest to largest numbers. If weight is not defined for each menu entry, Hugo will sort the entries alphabetically.
+	weight = 2 # Weight is an integer used to sort the menu items. The sorting goes from smallest to largest numbers. If weight is not defined for each menu entry, Hugo will sort the entries alphabetically.
 
 [[menu.main]]
 	identifier = "hosted-paged"
 	name = "Hosted pages"
 	url = "/hosted-paged/"
-	weight = 2 # Weight is an integer used to sort the menu items. The sorting goes from smallest to largest numbers. If weight is not defined for each menu entry, Hugo will sort the entries alphabetically.
+	weight = 3 # Weight is an integer used to sort the menu items. The sorting goes from smallest to largest numbers. If weight is not defined for each menu entry, Hugo will sort the entries alphabetically.
 
 [[menu.main]]
 	identifier = "tags"
 	name = "Tags"
 	url = "/tags/"
-	weight = 3
+	weight = 4

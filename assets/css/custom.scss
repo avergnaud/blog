@@ -7,13 +7,18 @@ $article-border: #eee;
 $article-box-shadow: #ccc;
 
 $header-height: 40vh;
-$left-menu-height: 50vh;
+$left-menu-top: 50vh;
+$left-menu-left: 2vw;
 
 $opacity: rgba(0,0,0,0.5);
 
 * {
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-size: 1rem;
 }
 
 nav {
@@ -114,8 +119,6 @@ index.html posts previews
   }
 }
 
-/*
-*/
 .post-footer {
   font-size: 0.95rem;
   color: $gray-light;
@@ -140,20 +143,47 @@ article {
 about page. languages stats
 */
 #languages-result {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
-  height: 25px;
+
+  th {
+    background-color: $some-green;
+    color: white;
+    font-weight: bold;
+  }
+
+  td {
+    padding: 0;
+
+    a {
+      display: block;
+      padding: 10px;
+    }
+  }
+  
+  tr:nth-child(even){background-color: #f2f2f2;}
 }
 
-#languages-result div {
-  border-left: 2px solid $some-green;
-  padding-left: 10px;
+/*
+hosted pages
+*/
+hr.hosted {
+  margin-bottom: 50px;
 }
 
 #languages-result div span.rnb {
   color: $some-green;
   font-weight: bold;
+}
+
+#ohlc-macd-chart-price {
+  display: block;
+  height: 5vw;
+  line-height: 5vw;
+  text-align: center;
+  font-size: 5vw;
+}
+
+.ohlc-macd-chart-sep {
+  margin-bottom: 15px;
 }
 
 /*
@@ -200,6 +230,9 @@ css loader
   }
 }
 
+/*
+RWD
+*/
 @media (min-width: 768px) {
 
   h2 {
@@ -211,11 +244,17 @@ css loader
   .nav-menu {
     width: 80%;
   }
+
+  #ohlc-macd-chart-price {
+    height: 1.9em;
+    line-height: 1.9em;
+    font-size: 1.9em;
+  }
 }
 @media (min-width: 900px) {
   h2 {
-    font-size: 3vmin;
-    line-height: 3vmin;
+    font-size: 5vmin;
+    line-height: 5vmin;
     margin: 1.25em 0;
   }
 
@@ -229,7 +268,8 @@ css loader
 
   .footer {
     position: absolute;
-    top: $left-menu-height;
+    top: $left-menu-top;
+    left: $left-menu-left;
     visibility: visible;
     margin-top: 1em;
     text-align: left;

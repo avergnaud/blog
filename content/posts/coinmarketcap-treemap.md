@@ -15,13 +15,15 @@ And 24h performance for 10 biggest cryptocurrencies. This project uses the [Coin
 
 ## Market Capitalization
 
-The browser first reaches a SpringBoot backend server. This backend calls CoinMarketCap and caches the data (for 30 minutes). The sources for the backend server [are available on Github](https://github.com/avergnaud/coinmarketcap-px)
+The browser first reaches a SpringBoot backend server. This backend calls CoinMarketCap and caches the data (for 30 minutes). The sources for the [backend server](https://github.com/avergnaud/coinmarketcap-px) and for the [d3.JS tree map](https://github.com/avergnaud/blog/blob/master/content/script/coinmarketcap-treemap.js) are available on Github.
+The first loading is slow because of:
+* Heroku Free plan making the backend "sleep after 30 mins of inactivity"
+* The call to coinmarketcap API, once the 30 minutes cache has expired
 <div class="first-post-visualisation">
     <div class="lds-container">
         <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
     </div>
 </div>
-<script src = "https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.js"></script>
 <script src = "/script/coinmarketcap-treemap.js"></script> 
 
 For each rectangle, the area is proportional to the currency's market capitalization. The % figure is the Kraken exchange rate performance for the last 24 hours (EUR market). Colored red when negative, and green when positive.

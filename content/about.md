@@ -4,9 +4,15 @@ type: section
 title: "About"
 ---
 
-Personal blog detailing the sources on [https://github.com/avergnaud](https://github.com/avergnaud)
+This is my personal blog providing details about the projects on [https://github.com/avergnaud](https://github.com/avergnaud)
 
-<div id="languages-result">Loading repositories...</div>
+<div id="loading">Loading repositories...</div>
+<table id="languages-result">
+<tr>
+    <th>Language</th>
+    <th>repositories</th>
+  </tr>
+</table>
 
 <script>
 
@@ -25,19 +31,30 @@ Personal blog detailing the sources on [https://github.com/avergnaud](https://gi
             return b[1] - a[1];
         });
 
-        var listDiv = document.getElementById("languages-result");
-        listDiv.innerHTML = ''
+        var table = document.getElementById("languages-result");
+        document.getElementById("loading").innerHTML = ''
         for (s of sortable) {
         if (s[0] != "null") {
             // do stuff
-            var languageDiv = document.createElement('div');
+            var languageRow = document.createElement('tr');
             var lien = "<a href='https://github.com/search?q=user%3Aavergnaud+language%3A" 
                         + s[0] 
                         + "&s=updated' target='_blank'>" 
                         + s[0] 
-                        + "</a>"
-            languageDiv.innerHTML = lien + ' <span class="rnb">' + s[1] + '</span>';  
-            listDiv.appendChild(languageDiv);
+                        + "</a>";
+            var lienCell = document.createElement('td');
+            lienCell.innerHTML = lien;
+            languageRow.appendChild(lienCell);
+            var nb = "<a href='https://github.com/search?q=user%3Aavergnaud+language%3A" 
+                        + s[0] 
+                        + "&s=updated' target='_blank'>" 
+                        + s[1] 
+                        + "</a>";
+            var nbCell = document.createElement('td');
+            nbCell.innerHTML = nb;
+            languageRow.appendChild(nbCell);
+            //languageRow.innerHTML = lien + ' <span class="rnb">' + s[1] + '</span>';  
+            table.appendChild(languageRow);
         }
         }
     }
