@@ -1,0 +1,101 @@
+@import 'constants';
+
+/* Add a black background color to the top navigation */
+.topnav {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  background-color: $almost-white;
+  /*background-color: #0d0c0c;*/
+  /*background-color: #2D2D2D;*/
+  /*background-color: #5f5f5f;*/
+  /*background-color: $opacity;*/
+  overflow: hidden;
+  border-bottom: 3px solid $dark-blue;
+
+  a {
+    float: left;
+    display: block;
+    color: $gray-dark;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: $dark-blue;
+  color: white;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+  display: none;
+  font-size: 30px;
+  padding-bottom: 11px;
+}
+
+.topnav + header {
+  margin-top: 55px;
+  height: 110px;
+  background-image: url("/images/shutterstock_1286277997_tiny.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-bottom: 3px solid $dark-blue;
+
+  .description-container {
+    width: 100%;
+    padding: 13px 0;
+    background-color: $opacity;
+  }
+
+  .site-title {
+    margin: 0;
+  }
+
+  .site-title a {
+    color: #fff;
+    font-size: 20px;
+  }
+}
+
+.topnav.responsive + header {
+  margin-top: 0;
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 576px) {
+  .topnav a:not(:first-child) {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}

@@ -4,7 +4,7 @@
     }
 }
 
-@include media(900px) {
+@include media(992px) {
 
     /*
     .site-title {
@@ -70,26 +70,6 @@
         border-top: none;
         padding-top: 0em;
         margin-top: 0.75em;
-    }
-
-    // FOOTER
-    .page-footer {
-        border-bottom: none;
-    }
-
-    .footer {
-        position: relative;
-        visibility: visible;
-        margin-top: 1em;
-        text-align: left;
-    }
-
-    .footer-mobile {
-        visibility: hidden;
-        height: 0em;
-        padding: 0em;
-        margin: 0em;
-        overflow: hidden;
     }
 
     .social-icons {

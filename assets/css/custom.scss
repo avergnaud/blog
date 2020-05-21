@@ -1,16 +1,4 @@
-$some-green: #359377;
-$gray-dark: #5f5f5f;
-$gray-light: #ababab;
-$gray-lightest: #d2d2d2;
-$almost-white: #fefefe;
-$article-border: #eee;
-$article-box-shadow: #ccc;
-
-$header-height: 40vh;
-$left-menu-top: 50vh;
-$left-menu-left: 2vw;
-
-$opacity: rgba(0,0,0,0.5);
+@import 'constants';
 
 * {
   margin: 0;
@@ -21,78 +9,10 @@ body {
   font-size: 1rem;
 }
 
-nav {
-  position: relative;
-  background-image: url("/images/shutterstock_1286277997_tiny.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: $header-height;
-  margin: 0 auto;
-  padding: 1px;
-}
-
-.nav-container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-items: center;
-}
-
-/*
-title
-*/
-.site-title {
-  margin: 0;
-
-  a {
-    color: $almost-white;
-    font-size: 1.1rem;
-    margin: 0;
-  }
-}
-
-.description-container {
-  width: 100%;
-  padding: 10px 0;
-  background-color: $opacity;
-}
-
-.description {
-  margin: 0;
-  color: $almost-white;
-  font-size: 5vmin;
-
-  p {
-    margin: 0;
-
-    a {
-      color: $almost-white;
-    }
-  }
-}
-
 h2 {
   font-size: 6vmin;
   line-height: 6vmin;
   margin: 1.25em 0;
-}
-
-.nav-menu {
-  text-align: center;
-  width: 100%;
-  justify-content: space-evenly;
-
-  > .color-link.nav-link {
-    background-color: $opacity;
-    color: $almost-white;
-    border: $almost-white 1px solid;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 0;
-  }
 }
 
 /*
@@ -145,7 +65,7 @@ about page. languages stats
 #languages-result {
 
   th {
-    background-color: $some-green;
+    background-color: $dark-blue;
     color: white;
     font-weight: bold;
   }
@@ -170,7 +90,7 @@ hr.hosted {
 }
 
 #languages-result div span.rnb {
-  color: $some-green;
+  color: $dark-blue;
   font-weight: bold;
 }
 
@@ -207,10 +127,10 @@ css loader
   width: 64px;
   height: 64px;
   margin: 8px;
-  border: 8px solid $some-green;
+  border: 8px solid $dark-blue;
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: $some-green transparent transparent transparent;
+  border-color: $dark-blue transparent transparent transparent;
 }
 .lds-ring div:nth-child(1) {
   animation-delay: -0.45s;
@@ -241,37 +161,17 @@ RWD
     margin: 1.25em 0;
   }
 
-  .nav-menu {
-    width: 80%;
-  }
-
   #ohlc-macd-chart-price {
     height: 1.9em;
     line-height: 1.9em;
     font-size: 1.9em;
   }
 }
-@media (min-width: 900px) {
+@media (min-width: 992px) {
   h2 {
     font-size: 5vmin;
     line-height: 5vmin;
     margin: 1.25em 0;
   }
 
-  .nav-menu {
-    width: 50%;
-  }
-
-  .description {
-    font-size: 3vmin;
-  }
-
-  .footer {
-    position: absolute;
-    top: $left-menu-top;
-    left: $left-menu-left;
-    visibility: visible;
-    margin-top: 1em;
-    text-align: left;
-  }
 }

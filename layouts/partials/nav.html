@@ -1,22 +1,47 @@
-<!-- Sidebar navigation -->
-<nav>
-  <div class="nav-container">
-      {{ partial "header.html" . }}
-      {{ if isset .Site.Params "description" }}
-      <div class="description-container">
-        <div class="description">
-            <p>{{ .Site.Params.Description | markdownify }}</p>
-        </div>
-      </div>
-      {{ end }}
-      <div class="nav-menu">
-        {{ range .Site.Menus.main }}
-          <a class="color-link nav-link" href="{{ .URL | relLangURL }}">{{ .Name }}</a>
-        {{ end }}
-        <!--
-          <a class="color-link nav-link" href="{{ .Site.RSSLink }}" target="_blank" rel="noopener" type="application/rss+xml">RSS</a>
-        -->
-      </div>
-    </div>
+<!-- navbar navigation -->
+
+<div class="topnav" id="myTopnav">
+  {{ range .Site.Menus.main }}
+  <a 
+    class="navigation-link"
+    href="{{ .URL | relLangURL }}"
+  >{{ .Name }}</a>
+  {{ end }}
+  <a
+    class="navigation-link"
+    href="{{ .Site.RSSLink }}"
+    target="_blank"
+    rel="noopener"
+    type="application/rss+xml"
+    >RSS</a
+  >
+  <a href="javascript:void(0);" class="icon" onclick="onBurgerClick()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+
+{{ partial "header.html" . }}
+
+<script>
+  /* hamburger menu click */
+  function onBurgerClick() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  }
+  /* active link */
+  (function () {
+    const links = document.querySelectorAll("a.navigation-link");
+    const currentUrl = location.href;
+    for (const link of links) {
+      if (link.href === currentUrl) {
+        link.classList.add("active");
+      }
+    }
+  })();
+</script>
+
 {{ partial "footer.html" . }}
-</nav>

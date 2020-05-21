@@ -10,7 +10,7 @@ paginate = 4 # Set the number of posts to show before overflowing to the next pa
 [params]
 	math = true
 	# Blog description at the top of the homepage. Supports markdown.
-	description = "[Fintech](https://en.wikipedia.org/wiki/Financial_technology) and full stack development"
+	description = "Fintech and full stack development"
 
 [taxonomies]
   tag = "tags"
