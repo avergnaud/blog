@@ -55,7 +55,7 @@ article {
   box-shadow: 0 2px 3px $article-box-shadow;
   background-color: white;
   padding: 10px;
-  margin: 10px auto;
+  margin: 25px auto;
   box-sizing: border-box;
 }
 
@@ -86,7 +86,7 @@ about page. languages stats
 hosted pages
 */
 hr.hosted {
-  margin-bottom: 50px;
+  margin-bottom: 65px;
 }
 
 #languages-result div span.rnb {
@@ -169,8 +169,8 @@ RWD
 }
 @media (min-width: 992px) {
   h2 {
-    font-size: 5vmin;
-    line-height: 5vmin;
+    font-size: 4vmin;
+    line-height: 4vmin;
     margin: 1.25em 0;
   }
 

@@ -52,7 +52,7 @@
 
     .content-container {
         max-width: 680px;
-        margin-left: 310px;
+        margin: 0 auto;
         padding: 0 1.5em 0 0;
         height: 100%;
         display: flex;
@@ -74,5 +74,19 @@
 
     .social-icons {
         width: 100%;
+    }
+}
+
+@include media(1200px) {
+
+    .content-container {
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .article-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
     }
 }
