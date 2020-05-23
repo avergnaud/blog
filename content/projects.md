@@ -1,7 +1,7 @@
 ---
 date: 2020-04-21
 type: section
-title: "Hosted Pages"
+title: "Projects"
 ---
 
 ### ReactJS rewriting of `create-react-app` using Webpack.

@@ -34,28 +34,28 @@ This is my personal blog providing details about the projects on [https://github
         var table = document.getElementById("languages-result");
         document.getElementById("loading").innerHTML = ''
         for (s of sortable) {
-        if (s[0] != "null") {
-            // do stuff
-            var languageRow = document.createElement('tr');
-            var lien = "<a href='https://github.com/search?q=user%3Aavergnaud+language%3A" 
-                        + s[0] 
-                        + "&s=updated' target='_blank'>" 
-                        + s[0] 
-                        + "</a>";
-            var lienCell = document.createElement('td');
-            lienCell.innerHTML = lien;
-            languageRow.appendChild(lienCell);
-            var nb = "<a href='https://github.com/search?q=user%3Aavergnaud+language%3A" 
-                        + s[0] 
-                        + "&s=updated' target='_blank'>" 
-                        + s[1] 
-                        + "</a>";
-            var nbCell = document.createElement('td');
-            nbCell.innerHTML = nb;
-            languageRow.appendChild(nbCell);
-            //languageRow.innerHTML = lien + ' <span class="rnb">' + s[1] + '</span>';  
-            table.appendChild(languageRow);
-        }
+            if (s[0] != "null") {
+                // do stuff
+                var languageRow = document.createElement('tr');
+                var lien = "<a href='https://github.com/search?q=user%3Aavergnaud+language%3A" 
+                            + s[0] 
+                            + "&s=updated' target='_blank'>" 
+                            + s[0] 
+                            + "</a>";
+                var lienCell = document.createElement('td');
+                lienCell.innerHTML = lien;
+                languageRow.appendChild(lienCell);
+                var nb = "<a href='https://github.com/search?q=user%3Aavergnaud+language%3A" 
+                            + s[0] 
+                            + "&s=updated' target='_blank'>" 
+                            + s[1] 
+                            + "</a>";
+                var nbCell = document.createElement('td');
+                nbCell.innerHTML = nb;
+                languageRow.appendChild(nbCell);
+                //languageRow.innerHTML = lien + ' <span class="rnb">' + s[1] + '</span>';  
+                table.appendChild(languageRow);
+            }
         }
     }
     else {

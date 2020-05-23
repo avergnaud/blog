@@ -29,9 +29,9 @@ paginate = 4 # Set the number of posts to show before overflowing to the next pa
 	weight = 2 # Weight is an integer used to sort the menu items. The sorting goes from smallest to largest numbers. If weight is not defined for each menu entry, Hugo will sort the entries alphabetically.
 
 [[menu.main]]
-	identifier = "hosted-paged"
-	name = "Hosted pages"
-	url = "/hosted-paged/"
+	identifier = "projects"
+	name = "Projects"
+	url = "/projects/"
 	weight = 3 # Weight is an integer used to sort the menu items. The sorting goes from smallest to largest numbers. If weight is not defined for each menu entry, Hugo will sort the entries alphabetically.
 
 [[menu.main]]
@@ -39,3 +39,9 @@ paginate = 4 # Set the number of posts to show before overflowing to the next pa
 	name = "Tags"
 	url = "/tags/"
 	weight = 4
+
+[[menu.main]]
+	identifier = "links"
+	name = "Links"
+	url = "/links/"
+	weight = 5
