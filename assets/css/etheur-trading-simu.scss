@@ -1,0 +1,16 @@
+.simu-line {
+  fill: none;
+  stroke: steelblue;
+  clip-path: url(#clip);
+}
+.simu-balance-line {
+  fill: none;
+  stroke: green;
+  clip-path: url(#clip);
+}
+
+.simu-zoom {
+  cursor: move;
+  fill: none;
+  pointer-events: all;
+}

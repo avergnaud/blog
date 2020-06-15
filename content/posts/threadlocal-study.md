@@ -2,7 +2,7 @@
 title: "ThreadLocal study"
 date: 2019-01-01T11:01:22+02:00
 draft: false
-imagePreview: "images/threadlocal-study-preview.jpg"
+imagePreview: "/images/threadlocal-study-preview.jpg"
 tags: [
     "Java",
     "Spring"
