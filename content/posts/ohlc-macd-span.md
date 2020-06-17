@@ -21,13 +21,24 @@ The graph enables horizontal scrolling. Click the graph to display each period's
 
 <hr class="ohlc-macd-chart-sep">
 <div id="ohlc-macd-chart-price"></div>
-<div id="ohlc-macd-chart-area"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-xl-9">
+      <div id="ohlc-macd-chart-area"></div>
+    <div>
+  </div>
+</div>
 
 <hr class="ohlc-macd-chart-sep">
 
 Sources are available on github for the [backend server](https://github.com/avergnaud/macd-definition) and the [ReactJS frontend](https://github.com/avergnaud/macd-front). The Java server is hosted on Heroku and uses a PostgreSQL database. The server requests the Kraken API every two minutes to retrieve the latest OHLC data. It also computes the MACD every two minutes. The ReactJS frontend is hosted on Firebase.
 
 From [wikipedia](https://en.wikipedia.org/wiki/MACD): the MACD, short for moving average convergence/divergence, is a trading indicator used in technical analysis of stock prices. 
+
+As stated by 
+<a target="_blank" href="https://en.wikipedia.org/wiki/MACD">wikipedia</a>
+, the trading strategy relies on the Signal-ligne crossovers:
+A "signal-line crossover" occurs when the MACD and Signal lines cross. The standard interpretation of such an event is a recommendation to buy if the MACD line crosses up through the average line (a "bullish" crossover), or to sell if it crosses down through the average line (a "bearish" crossover). These events are taken as indications that the trend in the stock is about to accelerate in the direction of the crossover. 
 
 <script src = "/script/ohlc-macd-span.js"></script> 
 <script>

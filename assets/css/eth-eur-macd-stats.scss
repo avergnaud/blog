@@ -1,0 +1,11 @@
+.tableLimited {
+  overflow-y: auto;
+  height: 500px;
+  font-size: 0.7rem;
+}
+
+@media (min-width: 768px) {
+  .tableLimited {
+    font-size: 1rem;
+  }
+}

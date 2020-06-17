@@ -32,7 +32,7 @@ This is my personal blog providing details about the projects on [https://github
         });
 
         var table = document.getElementById("languages-result");
-        document.getElementById("loading").innerHTML = ''
+        document.getElementById("loading").innerHTML = '';
         for (s of sortable) {
             if (s[0] != "null") {
                 // do stuff

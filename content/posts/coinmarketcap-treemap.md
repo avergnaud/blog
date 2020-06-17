@@ -5,7 +5,7 @@ draft: false
 imagePreview: "/images/coinmarketcap-treemap-preview.png"
 tags: [
     "fintech",
-    "D3.js",
+    "D3.js"
 ]
 ---
 
