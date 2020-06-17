@@ -1,7 +1,7 @@
 ---
 title: "ETHEUR MACD trading statistics"
 date: 2020-06-15T17:06:35+02:00
-draft: true
+draft: false
 imagePreview: "/images/eth-eur-macd-stats-preview.png"
 tags: [
     "fintech",
@@ -20,6 +20,12 @@ For every 1 year span of MACD trading on the ETHEUR market, how many simulations
 </ul>
 
 <!--more-->
+
+<a target="_blank" href="/posts/etheur-trading-simu/">
+This previous article
+</a> provided a visual representation of the MACD trading simulations.
+
+This post shows the overall performance of the MACD trading strategy...
 
 <hr>
 <div>
