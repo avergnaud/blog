@@ -9,6 +9,10 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <style>
+      p {
+        margin-top: 1rem;
+      }
+
       .card-header.custom-card-header {
         padding: 0.25rem 1.25rem;
       }
@@ -16,7 +20,11 @@
         margin-top: 4rem;
       }
       h3.custom-h3 {
+        border-bottom: 1px solid rgba(0,0,0,.125);
         margin-top: 1.75rem;
+      }
+      h4.custom-h4 {
+        margin-top: 2rem;
       }
       img.custom-img {
         max-width: 100%;
@@ -34,12 +42,15 @@
       <div class="jumbotron">
         <h1 class="display-4">Git workflows</h1>
         <hr class="my-4">
-          This article is based on 
+          This article was originally inspired from  
           <a 
             target="_blank"
             href="https://martinfowler.com/articles/branching-patterns.html"  
-          >Martin Fowler's Branching Patterns article</a>.
-          The first sections deal with common topics:
+          >Martin Fowler's Branching Patterns article</a>, but quickly included many other sources...
+          <p>
+            The first section is a quick reminder of the main Git states and commands.
+          </p>
+          The following sections deal with common topics:
           <ul>
             <li>How to maintain a linear commit history</li>
             <li>
@@ -72,10 +83,15 @@
           </ul>
           The next sections compare the various Git workflows for two use cases:
           <ul>
-            <li>Developing a new feature and releasing it</li>
-            <li>Fixing a bug an releasing the bugfix</li>
+            <li>Developing a new feature</li>
+            <li>Fixing a production bug</li>
           </ul>
-          I finally explain why a (small) variant of <u>Github Flow</u> is my personal preference for:
+          <p>
+            Then the release process is briefly mentioned.
+          </p>
+          <div>
+            I finally explain why a (small) variant of <u>Github Flow</u> is my personal preference for:
+          </div>
           <ul>
             <li>
               Applications that run with a single version in production. This is the most common case according to my personal work experience.
@@ -86,8 +102,307 @@
               or a few developers who are managed by a technical leader.
             </li>
           </ul>
-          
-      </div>
+      </div><!-- jumbotron -->
+
+
+
+      <div class="row">
+        <div class="col-12">
+          <h2 class="custom-h2">Some notes on Git</h2>
+          <div>
+            This section does not qualify as a proper Git introduction.
+            You should read the 
+            <a
+              target="_blank"
+              href="https://git-scm.com/doc"
+            >
+              official documentation
+            </a>
+          </div>
+          <div class="accordion" id="nag">
+            <div class="card">
+              <div class="card-header custom-card-header" id="nag-headingOne">
+                <h2 class="mb-0">
+                  <button
+                    class="btn btn-link"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#nag-collapseOne"
+                    aria-expanded="false"
+                    aria-controls="nag-collapseOne"
+                  >
+                    Here are a few notes and HOWTOs...
+                  </button>
+                </h2>
+              </div>
+
+              <div
+                id="nag-collapseOne"
+                class="collapse"
+                aria-labelledby="nag-headingOne"
+                data-parent="#nag"
+              >
+                <div class="card-body">
+                  <h3 class="custom-h3">Git main states</h3>
+                  <a
+                    target="_blank"
+                    href="https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository"
+                  >
+                  From the documentation:
+                  </a>
+                  <div id="lifecycle">
+                    <img class="custom-img" src="img/lifecycle.png" alt="Git lifecycle" />
+                  </div>
+                  <p>
+                    The <b>.gitignore</b> file defines which directories and files in your working directory are not even untracked.
+                  </p>
+                  <div>
+                    <kbd>git status</kbd> informs you about:
+                    <ul>
+                      <li>
+                        <b>untracked files</b> ("Untracked files"),
+                      </li>
+                      <li>
+                        <b>tracked and modified files</b> ("Changes not staged for commit"),
+                      </li>
+                      <li>
+                        <b>staged files</b> ("Changes to be committed")
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <a
+                      target="_blank"
+                      href="https://stackoverflow.com/questions/3636914/how-can-i-see-what-i-am-about-to-push-with-git"
+                    >
+                      This Stackoverflow question
+                    </a>
+                     asks <b>"How can I see what I am about to push?"</b>
+                     The correct answer is in the comment section...
+                  </div>
+                  <p>
+                    I modify a README.md file in a fresh local repository.
+                    Then I stage the file with 
+                    <div><kbd>git add README.md</kbd></div>
+                  </p>
+                  The command
+                  <div><kbd>git status</kbd></div> 
+                  returns:
+                  <p>
+                    <pre>
+  Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   README.md</pre>
+                  </p>
+                  <div>1. <kbd>git diff --stat --cached origin/master</kbd></div> 
+                  returns:
+                  <p>
+                    <pre>
+  README.md | 1 +
+  1 file changed, 1 insertion(+)</pre>
+                  </p>
+                  <div>2. <kbd>git diff --stat origin/master HEAD</kbd></div>
+                  does not return anything
+                  <div>
+                    And indeed
+                    <div><kbd>git push</kbd></div>
+                    returns:
+                    <pre>
+  Everything up-to-date</pre>
+                    </div>
+                  <p>
+                    If I commit then the two commands return the same result. And <kbd>git push</kbd> actually pushes the change.
+                  </p>
+                  <h3 class="custom-h3">HEAD</h3>
+                  The above command diffed the master branch on the origin repo with the local <kbd>HEAD</kbd>.
+                  <a
+                    target="_blank"
+                    href="https://stackoverflow.com/questions/2304087/what-is-head-in-git"
+                  >
+                    This SO question
+                  </a> asks "What is HEAD"? Multiple wordings are proposed:
+                  <p>
+                    <ul>
+                      <li>
+                        "You can think of the HEAD as the current branch. When you switch branches with git checkout, the HEAD revision changes to point to the tip of the new branch"
+                      </li>
+                      <li>
+                        "HEAD is the name given to the commit from which the working tree's current state was initialized. In more practical terms, it can be thought of as a symbolic reference to the checked-out commit".
+                        Also:
+                        <a
+                          target="_blank"
+                          href="http://marklodato.github.io/visual-git-guide/index-en.html#commit"
+                        >
+                          as explained here
+                        </a>, and
+                        <a
+                          target="_blank"
+                          href="http://onlywei.github.io/explain-git-with-d3/#commit"
+                        >
+                          there
+                        </a>,
+                        HEAD is updated to the last commit on each commit.
+                        <div>
+                          <a
+                            target="_blank"
+                            href="http://marklodato.github.io/visual-git-guide/index-en.html#commit"
+                          >
+                            <img class="custom-img" src="img/commit-master.svg.png" alt="Git commit" />
+                          </a>
+                        </div>
+                      </li>
+                      <li>
+                        "You can think of the HEAD as the current commit on the current branch"
+                      </li>
+                    </ul>
+                    HEAD is a reference to the last commit in the currently checked-out branch. That is why 
+                    <kbd>git diff --stat origin/master HEAD</kbd>
+                    compares the HEAD of the <b>master</b> branch of the origin repo, with the HEAD of the current local branch...
+                    (assumed to be the <b>master</b> branch of the local repo)
+                  </p>
+
+                  <h3 class="custom-h3">More about states</h3>
+                  <a
+                    target="_blank"
+                    href="https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F#_the_three_states"
+                  >
+                    From the documentation:
+                  </a>
+                  "Git has three main states that your files can reside in: modified, staged, and committed:
+                  <ul>
+                    <li>
+                      Modified means that you have changed the file but have not committed it to your database yet.
+                    </li>
+                    <li>
+                      Staged means that you have marked a modified file in its current version to go into your next commit snapshot.
+                    </li>
+                    <li>
+                      Committed means that the data is safely stored in your local database.
+                    </li>
+                  </ul>
+                  <p>
+                    This leads us to the three main sections of a Git project: the working tree, the staging area, and the Git directory."
+                  </p>
+                    <a
+                      target="_blank"
+                      href="https://stackoverflow.com/questions/55877484/is-committed-and-unmodified-the-same"
+                    >
+                      This SO question
+                    </a> explains the difference between:
+                    <ul>
+                      <li>Tracked / untracked</li>
+                      <li>(Unmodified /) modified / staged / committed</li>
+                    </ul>
+                    <p>
+                      The basic Git operations are summed up in the following diagram:
+                      <div id="git-states">
+                        <img class="custom-img" src="img/git_states.png" alt="Git operations" />
+                      </div>
+                    </p>
+                    <h4 class="custom-h4">
+                      How to revert un-staged changes to the last committed revision?
+                    </h4>
+                    If I modify the README.md file, 
+                    <div><kbd>git status</kbd></div>gives:
+                    <pre>
+  On branch master
+  Your branch is up to date with 'origin/master'.
+
+  Changes not staged for commit:
+    (use "git add &lt;file&gt;..." to update what will be committed)
+    (use "git restore &lt;file&gt;..." to discard changes in working directory)
+  	modified:   README.md
+
+  no changes added to commit (use "git add" and/or "git commit -a")</pre>
+                      <p>
+                        If I later want to revert this modification. Then I can use: <kbd>git checkout README.md</kbd>
+                      </p>
+                      <h4 class="custom-h4">
+                        How to revert staged changes to the last committed revision?
+                      </h4>
+                      <p>
+                        The first step is to undo <kbd>git add</kbd>
+                      </p>
+                      <p>
+                        In this case I modified the README.md file, then I staged the file using
+                        <kbd>git add README.md</kbd>
+                      </p>
+                      <div><kbd>git status</kbd></div>returns:
+                    <pre>
+  On branch master
+  Your branch is up to date with 'origin/master'.
+
+  Changes to be committed:
+    (use "git restore --staged &lt;file&gt;..." to unstage)
+    modified:   README.md</pre>
+                      <div>
+                        This time the command is
+                        <div><kbd>git reset README.md</kbd></div>
+                        which returns:
+                        <pre>
+  Unstaged changes after reset:
+  M	README.md</pre>
+                        </div>
+                      <p>
+                        The reset has removed staged changes from the commit index.
+                        The local modification is still present in the work-tree.
+                        I can include it in a later commit.
+                      </p>
+                      <p>
+                        But still, if I want to completely revert the modification, I then use <kbd>git checkout README.md</kbd> as previously.
+                      </p>
+                      <h4 class="custom-h4">
+                        How to revert a committed change?
+                      </h4>
+                      <p>
+                        <a
+                          target="_blank"
+                          href="https://stackoverflow.com/questions/927358/how-do-i-undo-the-most-recent-local-commits-in-git"
+                        >
+                          This SO question
+                        </a> gives the answer.
+                      </p>
+                      <p>
+                        The key is <kbd>git reset HEAD~</kbd>, which is equivalent to <kbd>git reset HEAD~1</kbd>.
+                      </p>
+                      <p>
+                        This command brings the index back to 1 commit before the last commit.
+                      </p>
+                      <h4 class="custom-h4">checkout and merge</h4>
+                      <p>
+                        The <a href="#git-states">above diagram</a> may be misleading because both <kbd>checkout</kbd>
+                        and <kbd>merge</kbd> seem to apply modifications from the local repository to the working directory.
+                      </p>
+                      <p>
+                        <a
+                          target="_blank"
+                          href="https://git-scm.com/docs/git-checkout"
+                        >
+                          git checkout
+                        </a> is used to switch branches (or restore working tree files, as shown above). 
+                        The command will not proceed if the index or the working tree differs from HEAD.
+                      </p>
+                      <p>
+                        <a
+                          target="_blank"
+                          href="https://git-scm.com/docs/git-merge"
+                        >
+                          git merge
+                        </a> "incorporates changes from the named commits (since the time their histories diverged from the current branch) into the current branch. 
+                        This command is used by <kbd>git pull</kbd> to incorporate changes from another repository and can be used by hand to merge changes from one branch into another."
+                      </p>
+                      <p>
+                        A fast-forward merge does not create a commit. A "regular" merge creates a commit.
+                        <a href="#lh">
+                          The next section
+                        </a> provides some details about that.
+                      </p>
+                </div><!-- card-body -->
+              </div><!-- collapse -->
+            </div><!-- card -->
+          </div><!-- accordion -->
+        </div><!-- col-12 -->
+      </div><!-- row -->
 
       <div class="row">
         <div class="col-12">
@@ -468,8 +783,6 @@
                       <div>
                         <kbd>git push</kbd>
                       </div>
-                  <pre>
-                  </pre>
                 </div>
               </div>
             </div><!-- card -->
@@ -840,6 +1153,34 @@
           </div>
         </div><!-- col-12 -->
       </div><!-- row -->    
+
+      <div class="row">
+        <div class="col-12">
+          <h2 class="custom-h2">The release process</h2>
+          The various git workflows do not advise on the whole release process.
+          Each workflow defines on what kind of branch the releases should be done.
+          <div>
+            To learn more about the release process, you may take a look at:
+            <ul>
+              <li>
+                  <a
+                    target="_blank"
+                    href="https://maven.apache.org/maven-release/maven-release-plugin/index.html"
+                  >
+                    The maven-release-plugin</a> for Java
+              </li>
+              <li>
+                  <a
+                    target="_blank"
+                    href="https://github.com/semantic-release/semantic-release"
+                  >
+                    The semantic-release package
+                  </a> for Javascript
+              </li>
+            </ul>
+          </div>
+        </div><!-- col-12 -->
+      </div><!-- row -->  
 
       <div class="row">
         <div class="col-12">
