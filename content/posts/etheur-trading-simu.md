@@ -36,6 +36,13 @@ Kraken exchange entry level fee</a>
             <svg></svg>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12">
+            <h3>Détail</h3>
+            <ul id="detail-list">
+            </ul>
+        </div>
+    </div>
 </div>
 
 <script src="/script/computeMacdSimulation.js"></script>
