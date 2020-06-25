@@ -243,6 +243,36 @@ function updateGraphs(s) {
     );
 }
 
+const highLightTradeEvent = domElement => {
+  
+  /* update graph */
+  d3.selectAll('circle.trading-event')
+    .remove();
+  focus
+    .append("circle")
+    .attr("id", domElement.id)
+    .attr("class", "trading-event")
+    .attr("cx", () => domElement.dataset.x)
+    .attr("cy", () => domElement.dataset.y)
+    .attr("r", 10)
+    .style("fill", domElement.dataset.color)
+    .style("fill-opacity", 0.4)
+    .style("stroke", domElement.dataset.color);
+
+    /* update table element */
+    document.querySelectorAll('#detail-list > li').forEach(elt => {
+      elt.style.border = 'none';
+    });
+    domElement.style.border = `1px solid ${domElement.dataset.color}`; 
+}
+
+const tradeEventClickHandler = event => {
+
+  const source = event.target;
+
+  highLightTradeEvent(source);
+}
+
 /*
 manually sets the brush, it must do this because the brush needs to be updated.
 */
@@ -323,10 +353,10 @@ function zoomed(json) {
 
   const listRef = document.getElementById("detail-list");
   listRef.innerHTML = "";
+  let visited = false;
   /* trading events */
   for (item of visibleData) {
     if (item.trading && item.trading.event) {
-      const id = `${formatDate(item.date)}_${item.trading.event}`;
       /* detail table */
       let message = formatDate(item.date) + ": ";
       if (item.trading.event === "BUY_SIGNAL") {
@@ -336,46 +366,30 @@ function zoomed(json) {
         message += `Selling ${item.trading.quantitySold.toFixed(2)} ETH `;
         message += `for ${item.closingPrice.toFixed(2)} € `;
       }
-      message += `(payed fees ${item.trading.payedFees.toFixed(2)}) € `;
-      message += `Balance: ${item.trading.balance.toFixed(2)} € `;
+      message += `(payed fees ${item.trading.payedFees.toFixed(2)} €) `;
+      message += `. Balance: ${item.trading.balance.toFixed(2)} € `;
       let li = document.createElement("li");
+      const id = `${formatDate(item.date)}_${item.trading.event}`;
+      li.id = id;
       li.dataset.x = x(item.date);
       li.dataset.y = y(item.closingPrice);
-      li.innerHTML = message;
-
       let color = "red";
       if (item.trading.event === "BUY_SIGNAL") {
         color = "green";
       }
+      li.dataset.color = color;
+      li.innerHTML = message;
 
-      const clickHandler = event => {
-
-        const source = event.target;
-
-        /* update graph */
-        d3.selectAll('circle.trading-event')
-          .remove();
-        focus
-          .append("circle")
-          .attr("id", id)
-          .attr("class", "trading-event")
-          .attr("cx", () => source.dataset.x)
-          .attr("cy", () => source.dataset.y)
-          .attr("r", 10)
-          .style("fill", color)
-          .style("fill-opacity", 0.4)
-          .style("stroke", color);
-
-          /* update table element */
-          document.querySelectorAll('#detail-list > li').forEach(elt => {
-            elt.style.border = 'none';
-          });
-          event.target.style.border = `1px solid ${color}`; 
-      }
       li.addEventListener('click', 
-        clickHandler, 
+        tradeEventClickHandler, 
         false);
       listRef.appendChild(li);
+
+      /* first one is highlighted */
+      if(!visited) {
+        highLightTradeEvent(li);
+        visited = true;
+      }
 
       /* dots on the graph */
       focus
